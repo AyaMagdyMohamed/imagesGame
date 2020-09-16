@@ -13,16 +13,9 @@ app.use(fileUpload({
 }));
 
 app.use(express.static("public"))
-
-//app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 app.use("/",HomeRoutes);
 app.use("/create",imageRoutes);
-//app.set('view engine','ejs')
-//app.set('views','./views')
-
-
-
 
 app.listen(8090, function() {
 
