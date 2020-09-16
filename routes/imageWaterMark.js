@@ -37,12 +37,12 @@ router.post("/", async function (req, resp) {
   }
      */
 
-    sharp('./public/' + image)
+    sharp('./public/' + image.name)
       .rotate(imageDetails.angel)
       .resize(imageDetails.width, imageDetails.height)
       .toBuffer({ resolveWithObject: true })
       .then(({ data, info }) => {
-        sharp('./public/' + template) // Let's start a new sharp on the underside image 
+        sharp('./public/' + template.name) // Let's start a new sharp on the underside image 
 
           .composite([{
             input: data,
@@ -54,7 +54,7 @@ router.post("/", async function (req, resp) {
           }])
           .toFile('./public/output.jpg', function (err, info) {
             console.log("Error: ", err);
-            resp.send({ "finalTemplateURL": req.host + "output.jpg" });
+            resp.send({ "finalTemplateURL": "output.jpg" });
           });
       })
 
