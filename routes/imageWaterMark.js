@@ -54,7 +54,7 @@ router.post("/", async function (req, resp) {
           }])
           .toFile('./public/output.jpg', function (err, info) {
             console.log("Error: ", err);
-            resp.send({ "finalTemplateURL": "output.jpg" });
+            resp.send({ "finalTemplateURL": req.host+":"+req.socket.localPort+"/output.jpg" });
           });
       })
 
